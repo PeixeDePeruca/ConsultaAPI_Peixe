@@ -1,15 +1,12 @@
 <?php
 
-use App\Http\Controllers\Api\ProdutoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExternalApiController;
+use App\Http\Controllers\PeixeController;
 
-Route::apiResource('/produtos', ProdutoController::class);
+// Rota do Consumo da API Externa (Requisito 1)
+Route::get('/externa', [ExternalApiController::class, 'index']);
 
-
-/*
-GET     /api/produtos
-POST    /api/produtos
-SHOW    /api/produtos/id
-PUT     /api/produtos/id
-*/
+// Rotas RESTful da sua API (Requisito 2)
+Route::apiResource('peixes', PeixeController::class);
