@@ -9,8 +9,8 @@ class ExternalApiController extends Controller
 {
     public function index()
     {
-        // Consumindo a API pública do PokeAPI
-        $response = Http::get('https://pokeapi.co/api/v2/pokemon/ditto');
+        // desativa a verificação SSL local para permitir a conexão cURL
+        $response = Http::withoutVerifying()->get('https://pokeapi.co/api/v2/pokemon/ditto');
 
         return response()->json($response->json());
     }
